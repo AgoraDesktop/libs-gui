@@ -74,7 +74,8 @@ static NSMapTable *viewInfo = 0;
 
 #define cellRects ((GSIArray)NSMapGet(viewInfo, self))
 
-#define HORIZONTAL_MENU_LEFT_PADDING 8
+#define HORIZONTAL_MENU_RIGHT_PADDING 4
+#define HORIZONTAL_MENU_LEFT_PADDING 4
 
 /*
   NSMenuView contains:
@@ -789,7 +790,7 @@ static float menuBarHeight = 0.0;
         {
           GSCellRect elem;
           NSMenuItemCell *aCell = [self menuItemCellForItemAtIndex: i];
-          float titleWidth = [aCell titleWidth];
+          float titleWidth = [aCell titleWidth] + 4;
 
           if ([aCell imageWidth])
             {
