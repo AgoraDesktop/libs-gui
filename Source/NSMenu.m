@@ -476,7 +476,7 @@ static BOOL menuBarVisible = YES;
   if (_menu.horizontal == YES)
     {
       NSRect screenFrame = [[NSScreen mainScreen] frame];
-      origin = NSMakePoint (0, screenFrame.size.height
+      origin = NSMakePoint (32, screenFrame.size.height
                             - [_aWindow frame].size.height);
       origin.y += screenFrame.origin.y;
       [_aWindow setFrameOrigin: origin];
@@ -1592,6 +1592,10 @@ static BOOL menuBarVisible = YES;
                                            + oldWindowFrame.size.height
                                            - newWindowFrame.size.height);
     }
+  if (self._isMain != NO) { 
+  	newWindowFrame.size.width -= 288;
+  }
+
   [_aWindow setFrame: newWindowFrame display: NO];
   
   // Transient
