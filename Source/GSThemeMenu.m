@@ -172,7 +172,7 @@
 
 - (BOOL) menuShouldShowIcon
 {
-  return YES; // override whether or not to show the icon in the menu.
+  return NO ; // override whether or not to show the icon in the menu.
 }
 
 @end

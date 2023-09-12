@@ -477,8 +477,7 @@ static BOOL menuBarVisible = YES;
     {
       NSRect screenFrame = [[NSScreen mainScreen] frame];
       origin = NSMakePoint (32, screenFrame.size.height
-                            - [_aWindow frame].size.height);
-      origin.y += screenFrame.origin.y;
+                            - [_aWindow frame].size.height + 1);
       [_aWindow setFrameOrigin: origin];
       [_bWindow setFrameOrigin: origin];
     }
