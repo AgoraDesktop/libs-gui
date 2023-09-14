@@ -1673,10 +1673,12 @@ static float menuBarHeight = 0.0;
                * between X-coordinates and GNUstep coordinates let the
                * GNUstep screen coordinates start with 1.
                */
+	      /*
               if (pointerLoc.x == 0 || pointerLoc.y == 1
                 || pointerLoc.x == screenFrame.size.width - 1
                 || pointerLoc.y == screenFrame.size.height)
                 [_attachedMenu shiftOnScreen];
+		*/
             }
 
           /*

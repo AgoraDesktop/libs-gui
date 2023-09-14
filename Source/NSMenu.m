@@ -476,7 +476,7 @@ static BOOL menuBarVisible = YES;
   if (_menu.horizontal == YES)
     {
       NSRect screenFrame = [[NSScreen mainScreen] frame];
-      origin = NSMakePoint (32, screenFrame.size.height
+      origin = NSMakePoint (35, screenFrame.size.height
                             - [_aWindow frame].size.height + 1);
       [_aWindow setFrameOrigin: origin];
       [_bWindow setFrameOrigin: origin];
