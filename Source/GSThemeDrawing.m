@@ -1135,6 +1135,8 @@
 
 - (NSColor *) menuBorderColor
 {
+	return self.menuItemBackgroundColor;
+/*
   NSColor *color = [self colorNamed: @"menuBorderColor"
                               state: GSThemeNormalState];
   if (color == nil)
@@ -1142,6 +1144,7 @@
       color = [NSColor darkGrayColor];
     }
   return color;
+*/
 }
 
 - (NSColor *) menuBarBackgroundColor
@@ -1155,8 +1158,9 @@
   return color;
 }
 
-- (NSColor *) menuBarBorderColor
-{
+- (NSColor *) menuBarBorderColor {
+	return NSColor.clearColor;
+/*
   NSColor *color = [self colorNamed: @"menuBarBorderColor"
                               state: GSThemeNormalState];
   if (color == nil)
@@ -1164,18 +1168,19 @@
       color = [self menuBorderColor];
     }
   return color;
+*/
 }
 
 - (NSColor *) menuBorderColorForEdge: (NSRectEdge)edge isHorizontal: (BOOL)horizontal
 {
   if (horizontal && edge == NSMinYEdge)
     {
-      return [self menuBorderColor];
+      return NSColor.clearColor;
     }
   else if (edge == NSMinXEdge || edge == NSMaxYEdge)
     {
       // Draw the dark gray upper left lines.
-      return [self menuBorderColor];
+      return NSColor.clearColor;
     }
   return nil;
 }
