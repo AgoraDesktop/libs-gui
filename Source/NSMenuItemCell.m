@@ -558,8 +558,10 @@ static NSString *commandKeyString = @"#";
 - (NSRect) keyEquivalentRectForBounds:(NSRect)cellFrame
 {
   // Calculate the image part of cell frame from NSMenuView
-  cellFrame.origin.x  += [_menuView keyEquivalentOffset];
-  cellFrame.size.width = [_menuView keyEquivalentWidth];
+  //
+  // cellFrame.origin.x  += [_menuView keyEquivalentOffset];
+  	cellFrame.origin.x = cellFrame.size.width - _menuView.keyEquivalentWidth - 2;
+	cellFrame.size.width = [_menuView keyEquivalentWidth];
 
   return cellFrame;
 }
