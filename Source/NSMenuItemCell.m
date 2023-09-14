@@ -289,7 +289,7 @@ static NSString *commandKeyString = @"#";
                           (m & NSAlternateKeyMask) ? alternateKeyString : @"",
                           (shift != NO) ? shiftKeyString : @"",
                           (m & NSCommandKeyMask) ? commandKeyString : @"",
-                          key];
+                          ucKey];
         }
     }
 
