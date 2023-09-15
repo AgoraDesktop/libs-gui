@@ -114,6 +114,8 @@
    window B correspond to transient == YES
 */
 
+#define APP_MENU_PADDING_LEFT 35
+
 
 /* Subclass of NSPanel since menus cannot become key */
 @interface NSMenuPanel : NSPanel
@@ -476,7 +478,7 @@ static BOOL menuBarVisible = YES;
   if (_menu.horizontal == YES)
     {
       NSRect screenFrame = [[NSScreen mainScreen] frame];
-      origin = NSMakePoint (35, screenFrame.size.height
+      origin = NSMakePoint (APP_MENU_PADDING_LEFT, screenFrame.size.height
                             - [_aWindow frame].size.height + 1);
       [_aWindow setFrameOrigin: origin];
       [_bWindow setFrameOrigin: origin];
