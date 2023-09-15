@@ -270,6 +270,7 @@ static BOOL menuBarVisible = YES;
   if ([self _isMain])
     {
       NSString *appTitle;
+      NSMutableString *mutableAppTitle;
       NSMenu *appMenu;
       id <NSMenuItem> appItem;
 
@@ -285,12 +286,17 @@ static BOOL menuBarVisible = YES;
       if (_menu.horizontal == YES)
         {
           NSMutableArray *itemsToMove;
+
+	  mutableAppTitle = [NSMutableString stringWithCapacity: appTitle.length + 5];
+
+	  [mutableAppTitle appendString: appTitle];
+	  [mutableAppTitle appendString: @"   "];
 	  
           itemsToMove = [NSMutableArray new];
-          
-          if (appMenu == nil)
+	
+	  if (appMenu == nil)
             {
-              [self insertItemWithTitle: appTitle
+              [self insertItemWithTitle: mutableAppTitle
                     action: NULL
                     keyEquivalent: @"" 
                     atIndex: 0];
@@ -306,6 +312,7 @@ static BOOL menuBarVisible = YES;
               if (index != 0)
                 {
                   RETAIN (appItem);
+		  appItem.title = mutableAppTitle;
                   [self removeItemAtIndex: index];
                   [self insertItem: appItem atIndex: 0];
                   RELEASE (appItem);
@@ -360,7 +367,7 @@ static BOOL menuBarVisible = YES;
               [self removeItem: anItem];
               [appMenu addItem: anItem];
             }
-          
+        
           RELEASE(itemsToMove);
         }      
       else 
