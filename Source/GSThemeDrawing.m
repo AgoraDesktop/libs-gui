@@ -1339,8 +1339,36 @@
                             state: (GSThemeControlState)state
                      isHorizontal: (BOOL)isHorizontal
 {
-  [cell _drawText: [[cell menuItem] title]
-          inFrame: [cell titleRectForBounds: cellFrame]];
+
+// In the case of an app menu, that is, a menu item in a horizontal menu
+// the title of which is equal to the name of the app, the title should
+// be drawn bold. We can substitute -[_drawAttributedText:inframe:] for
+// -[_drawText:inFrame] to make that work -- but first, we have to detect
+// the app menu.
+
+	NSString *menuTitle = cell.menuItem.title;
+	NSString *appTitle = [NSBundle.mainBundle.localizedInfoDictionary objectForKey: @"ApplicationName"];
+	
+  	NSMutableString *mutableAppTitle = [NSMutableString stringWithCapacity: appTitle.length + 5];
+
+	[mutableAppTitle appendString: appTitle];
+	[mutableAppTitle appendString: @"   "];
+
+	NSMutableDictionary *attrs = NSMutableDictionary.dictionary;
+
+	attrs[NSFontAttributeName] = [NSFont boldSystemFontOfSize: 0.0];
+
+	NSAttributedString *boldTitle = [[NSAttributedString alloc] initWithString: mutableAppTitle
+									attributes: attrs];
+
+	if (isHorizontal == YES && [menuTitle isEqualToString: mutableAppTitle]) {
+		[cell _drawAttributedText: boldTitle
+				  inFrame: [cell titleRectForBounds: cellFrame]];
+
+	} else {
+		[cell _drawText: [[cell menuItem] title]
+		inFrame: [cell titleRectForBounds: cellFrame]];
+	}
 }
 
 - (Class) titleViewClassForMenuView: (NSMenuView *)aMenuView
