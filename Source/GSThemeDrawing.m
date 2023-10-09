@@ -1347,17 +1347,15 @@
 // the app menu.
 
 	NSString *menuTitle = cell.menuItem.title;
-	NSString *appTitle = [NSBundle.mainBundle.localizedInfoDictionary objectForKey: @"ApplicationName"];
+	NSString *appTitle = [[[NSBundle mainBundle] localizedInfoDictionary] objectForKey: @"ApplicationName"];
 	
   	NSMutableString *mutableAppTitle = [NSMutableString stringWithCapacity: appTitle.length + 5];
 
 	[mutableAppTitle appendString: appTitle];
 	[mutableAppTitle appendString: @"   "];
 
-	NSMutableDictionary *attrs = NSMutableDictionary.dictionary;
-
-	attrs[NSFontAttributeName] = [NSFont boldSystemFontOfSize: 0.0];
-
+        NSMutableDictionary *attrs = [NSMutableDictionary dictionaryWithObject: [NSFont boldSystemFontOfSize: 0.0] forKey: NSFontAttributeName];
+	
 	NSAttributedString *boldTitle = [[NSAttributedString alloc] initWithString: mutableAppTitle
 									attributes: attrs];
 
